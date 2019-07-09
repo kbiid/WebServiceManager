@@ -152,8 +152,8 @@
 					</tbody>
 				</table>
 			</div>
-			<nav style="width: 300px; height: 40px; margin: 0px;">
-				<ul class="pagination">
+			<nav style="width: 800px; left: 50px; height: 40px; padding: 0px;">
+				<ul class="pagination justify-content-center">
 					<li class="page-item"><a class="page-link" href="#"
 						aria-label="Previous"> <span aria-hidden="true">«</span> <span
 							class="sr-only">Previous</span>
@@ -167,8 +167,11 @@
 					</a></li>
 				</ul>
 			</nav>
-			<button class="btn btn-lg btn-primary btn-block" type="submit"
-				id="addUser" style="width: 100px; height: 40px; text-align: center; font-size: 20px;">추가</button>
+			<div align="right">
+				<button class="btn btn-lg btn-primary btn-block" type="submit"
+					id="addUser"
+					style="left: 700px; width: 100px; height: 40px; text-align: center; font-size: 20px;">추가</button>
+			</div>
 		</div>
 	</div>
 </body>
