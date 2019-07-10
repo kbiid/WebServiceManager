@@ -32,18 +32,19 @@ public class LoginController {
 		admin.setPasswd(reader.getAdminPwd());
 	}
 
-	@RequestMapping(value = "/")
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
 		logger.info("home method");
-		return "login";
+		return "/views/login.html";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = {RequestMethod.POST, RequestMethod.GET})
 	public String checkInput(Admin admin, Model model) throws NoSuchAlgorithmException {
-		logger.info("checkInput method");
 		if (this.admin.checkAdminInfo(admin.getId(), admin.getPasswd())) {
-			return "viewUserList";
+			logger.info("login success");
+			return "/views/viewUserList.html";
 		}
-		return "loginFail";
+		logger.info("login fail");
+		return "/views/loginFail.html";
 	}
 }

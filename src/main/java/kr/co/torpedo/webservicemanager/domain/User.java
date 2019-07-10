@@ -1,5 +1,7 @@
 package kr.co.torpedo.webservicemanager.domain;
 
+import java.sql.Date;
+
 public class User {
 	private int id;
 	private String firstName;
@@ -7,17 +9,19 @@ public class User {
 	private String email;
 	private String gender;
 	private String ipAddress;
+	private Date date;
 
 	public User() {
 	}
 
-	public User(int id, String firstName, String lastName, String email, String gender, String ipAddress) {
+	public User(int id, String firstName, String lastName, String email, String gender, String ipAddress, Date date) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.gender = gender;
 		this.ipAddress = ipAddress;
+		this.date = date;
 	}
 
 	public int getId() {
@@ -66,5 +70,13 @@ public class User {
 
 	public void setIpAddress(String ipAddress) {
 		this.ipAddress = ipAddress;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 }

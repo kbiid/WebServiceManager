@@ -1,0 +1,44 @@
+package kr.co.torpedo.webservicemanager.service;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
+import kr.co.torpedo.webservicemanager.dao.UserDAO;
+import kr.co.torpedo.webservicemanager.domain.User;
+
+@Service
+public class UserServiceImpl implements UserService {
+	private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+
+	@Inject
+	UserDAO userDao;
+
+	@Override
+	public List<User> selectAll() {
+		logger.info("selectAll");
+		return userDao.selectAll();
+	}
+
+	@Override
+	public void insert(User user) {
+		logger.info("insert");
+		userDao.insert(user);
+	}
+
+	@Override
+	public void update(User user) {
+		logger.info("update");
+		userDao.update(user);
+	}
+
+	@Override
+	public void delete(int id) {
+		logger.info("delete");
+		userDao.delete(id);
+	}
+}

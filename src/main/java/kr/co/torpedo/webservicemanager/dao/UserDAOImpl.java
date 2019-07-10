@@ -1,0 +1,44 @@
+package kr.co.torpedo.webservicemanager.dao;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
+
+import kr.co.torpedo.webservicemanager.domain.User;
+
+@Repository
+public class UserDAOImpl implements UserDAO {
+	private static final Logger logger = LoggerFactory.getLogger(UserDAOImpl.class);
+
+	@Inject
+	SqlSession sqlSession;
+
+	@Override
+	public List<User> selectAll() {
+		logger.info("selectAll");
+		return sqlSession.selectList("kr.co.torpedo.webservicemanager.dao.UserDAO.selectAll");
+	}
+
+	@Override
+	public void insert(User user) {
+		logger.info("insert");
+		sqlSession.insert("kr.co.torpedo.webservicemanager.dao.UserDAO.insert");
+	}
+
+	@Override
+	public void update(User user) {
+		logger.info("update");
+		sqlSession.update("kr.co.torpedo.webservicemanager.dao.UserDAO.update");
+	}
+
+	@Override
+	public void delete(int id) {
+		logger.info("delete");
+		sqlSession.delete("kr.co.torpedo.webservicemanager.dao.UserDAO.delete");
+	}
+}
