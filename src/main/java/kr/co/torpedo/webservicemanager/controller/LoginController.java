@@ -38,8 +38,9 @@ public class LoginController {
 		return "/views/login.html";
 	}
 
-	@RequestMapping(value = "/login", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "/login", method = { RequestMethod.POST, RequestMethod.GET })
 	public String checkInput(Admin admin, Model model) throws NoSuchAlgorithmException {
+		logger.info("checkInput");
 		if (this.admin.checkAdminInfo(admin.getId(), admin.getPasswd())) {
 			logger.info("login success");
 			return "/views/viewUserList.html";
