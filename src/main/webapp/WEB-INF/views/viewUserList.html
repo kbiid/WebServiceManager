@@ -64,7 +64,7 @@
 						<tr th:each="User : ${list}">
 							<td th:text="${User.id}">아이디</td>
 							<td><a
-								th:href="@{/readUser(id=${User.id},page=${pageMaker.cri.page},perPageNum=${pageMaker.cri.perPageNum})}"
+								th:href="@{/update(id=${User.id},page=${pageMaker.cri.page},perPageNum=${pageMaker.cri.perPageNum})}"
 								th:text="${User.firstName}">이름</a></td>
 							<td th:text="${User.lastName}">성</td>
 							<td th:text="${User.email}">이메일</td>

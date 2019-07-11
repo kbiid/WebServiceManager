@@ -69,9 +69,15 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String registerUser() {
-		logger.info("registerUser");
+	public String register() {
+		logger.info("register");
 		return "register";
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public String update() {
+		logger.info("register");
+		return "form";
 	}
 
 }
