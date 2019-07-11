@@ -56,9 +56,6 @@ public class LoginController {
 		String passwd = httpServletRequest.getParameter("passwd");
 		if (this.admin.checkAdminInfo(id, passwd)) {
 			logger.info("login success");
-			for (User user : userService.listCriteria(cri)) {
-				logger.info(user.getFirstName() + ", " + user.getLastName()+ ", " + user.getIpAddress());
-			}
 			model.addAttribute("list", userService.listCriteria(cri));
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(cri);
@@ -69,6 +66,12 @@ public class LoginController {
 		}
 		logger.info("login fail");
 		return "loginFail";
+	}
+
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String registerUser() {
+		logger.info("registerUser");
+		return "register";
 	}
 
 }

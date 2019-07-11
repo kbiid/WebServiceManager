@@ -76,9 +76,9 @@
 				</table>
 			</div>
 			<div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
-              </ul>
-              </div>
+				<ul class="pagination pagination-sm no-margin pull-right">
+				</ul>
+			</div>
 			<nav style="width: 1000px; left: 50px; height: 50px;">
 				<ul class="pagination justify-content-center">
 					<li th:if="${pageMaker.prev} == true"><a
@@ -100,33 +100,12 @@
 				</ul>
 			</nav>
 			<div align="right">
-				<button class="btn btn-lg btn-primary btn-block" type="submit"
-					id="addUser"
-					style="left: 700px; width: 100px; height: 40px; text-align: center; font-size: 20px;">추가</button>
+				<input class="btn btn-lg btn-primary btn-block"
+					style="left: 700px; width: 100px; height: 40px; text-align: center; font-size: 20px;"
+					id="addUser" type="button" value="추가"
+					onclick="location.href='/kkj/register'">
 			</div>
 		</div>
 	</div>
 </body>
-<script> 
-	<!-- ajax를 사용하여 전체 조회 성공-->
-	<!-- $(document).ready(function(){
-		$.ajax({
-			url : "/kkj/selectAllUser",
-			type : "POST",
-			dataType : "json",
-			success : function(responseData){
-				let data = responseData.data;
-				for (let i=0; i <responseData.length; i++) {
-					let option = $("<tr> <td>" + responseData[i].id + "</td> <td>" + responseData[i].firstName + "</td> <td>" + responseData[i].lastName + "</td> <td>" 
-							+ responseData[i].email + "</td> <td>" + responseData[i].gender + "</td> <td>" + responseData[i].ipAddress + "</td> <td>" + responseData[i].date + "</td> </td>");
-					$("#board_list").append(option);
-				}
-			},
-			error: (xhr, status, error) => {
-				console.log(error);
-				alert(error);
-			}
-		});
-	})-->
-</script>
 </html>

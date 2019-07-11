@@ -3,11 +3,11 @@
 <mapper namespace="kr.co.torpedo.webservicemanager.dao.UserDAO">
 	<resultMap type="User" id="result">
 		<result property="id" column="id" />
-		<result property="firstName" column="first_name" />
-		<result property="lastName" column="last_name" />
+		<result property="first_name" column="first_name" />
+		<result property="last_name" column="last_name" />
 		<result property="email" column="email" />
 		<result property="gender" column="gender" />
-		<result property="ipAddress" column="ip_address" />
+		<result property="ip_address" column="ip_address" />
 		<result property="date" column="date" />
 	</resultMap>
 
@@ -25,18 +25,18 @@
 	</select>
 
 	<insert id="insert" parameterType="User">
-		insert into user
-		values(#{id},#{firstName},#{lastName},#{email},#{gender},#{ipAddress},#{date});
+		insert into user(first_name,last_name,email,gender,ip_address,date)
+		values(#{first_name},#{last_name},#{email},#{gender},#{ip_address},DATE_FORMAT(now(),'%Y-%m-%d'));
 	</insert>
 
 	<update id="update" parameterType="User">
 		update user set
-		id=#{id},first_name=#{firstName},last_name=#{lastName},email=#{email},gender=#{gender},ip_address=#{ipAddress},date=#{date}
+		id=#{id},first_name=#{first_name},last_name=#{last_name},email=#{email},gender=#{gender},ip_address=#{ip_address},date=#{date}
 		where id=#{id};
 	</update>
 
-	<delete id="delete" parameterType="int">
+	<delete id="delete" parameterType="String">
 		delete from user where
-		id=#{id};
+		email=#{email};
 	</delete>
 </mapper>

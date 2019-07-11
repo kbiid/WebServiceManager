@@ -7,21 +7,24 @@ import org.apache.ibatis.type.Alias;
 @Alias("User")
 public class User {
 	private int id;
-	private String firstName;
-	private String lastName;
+	private String first_name;
+	private String last_name;
 	private String email;
 	private String gender;
-	private String ipAddress;
+	private String ip_address;
 	private Date date;
 
 	public User(int id, String firstName, String lastName, String email, String gender, String ipAddress, Date date) {
 		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.first_name = firstName;
+		this.last_name = lastName;
 		this.email = email;
 		this.gender = gender;
-		this.ipAddress = ipAddress;
+		this.ip_address = ipAddress;
 		this.date = date;
+	}
+
+	public User() {
 	}
 
 	public int getId() {
@@ -33,19 +36,19 @@ public class User {
 	}
 
 	public String getFirstName() {
-		return firstName;
+		return first_name;
 	}
 
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.first_name = firstName;
 	}
 
 	public String getLastName() {
-		return lastName;
+		return last_name;
 	}
 
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		this.last_name = lastName;
 	}
 
 	public String getEmail() {
@@ -65,11 +68,11 @@ public class User {
 	}
 
 	public String getIpAddress() {
-		return ipAddress;
+		return ip_address;
 	}
 
 	public void setIpAddress(String ipAddress) {
-		this.ipAddress = ipAddress;
+		this.ip_address = ipAddress;
 	}
 
 	public Date getDate() {

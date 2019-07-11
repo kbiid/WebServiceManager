@@ -50,8 +50,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void delete(int id) {
+	public void delete(String email) {
 		logger.info("delete");
-		userDao.delete(id);
+		userDao.delete(email);
 	}
 }

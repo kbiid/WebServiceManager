@@ -22,5 +22,5 @@ public interface UserService {
 	public void update(User user);
 
 	// 유저 삭제
-	public void delete(int id);
+	public void delete(String email);
 }

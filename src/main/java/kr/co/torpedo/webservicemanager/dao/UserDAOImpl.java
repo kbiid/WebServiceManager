@@ -40,18 +40,18 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public void insert(User user) {
 		logger.info("insert");
-		sqlSession.insert("kr.co.torpedo.webservicemanager.dao.UserDAO.insert");
+		sqlSession.insert("kr.co.torpedo.webservicemanager.dao.UserDAO.insert", user);
 	}
 
 	@Override
 	public void update(User user) {
 		logger.info("update");
-		sqlSession.update("kr.co.torpedo.webservicemanager.dao.UserDAO.update");
+		sqlSession.update("kr.co.torpedo.webservicemanager.dao.UserDAO.update", user);
 	}
 
 	@Override
-	public void delete(int id) {
+	public void delete(String email) {
 		logger.info("delete");
-		sqlSession.delete("kr.co.torpedo.webservicemanager.dao.UserDAO.delete");
+		sqlSession.delete("kr.co.torpedo.webservicemanager.dao.UserDAO.delete", email);
 	}
 }
