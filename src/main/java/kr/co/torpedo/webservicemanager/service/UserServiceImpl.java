@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import kr.co.torpedo.webservicemanager.dao.UserDAO;
+import kr.co.torpedo.webservicemanager.domain.Criteria;
 import kr.co.torpedo.webservicemanager.domain.User;
 
 @Service
@@ -22,6 +23,18 @@ public class UserServiceImpl implements UserService {
 	public List<User> selectAll() {
 		logger.info("selectAll");
 		return userDao.selectAll();
+	}
+
+	@Override
+	public List<User> listCriteria(Criteria cri) {
+		logger.info("listCriteria");
+		return userDao.listCriteria(cri);
+	}
+
+	@Override
+	public int countPaging(Criteria cri) {
+		logger.info("countPaging");
+		return userDao.countPaging(cri);
 	}
 
 	@Override

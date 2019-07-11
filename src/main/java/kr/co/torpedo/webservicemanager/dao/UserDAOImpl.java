@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import kr.co.torpedo.webservicemanager.domain.Criteria;
 import kr.co.torpedo.webservicemanager.domain.User;
 
 @Repository
@@ -23,7 +24,19 @@ public class UserDAOImpl implements UserDAO {
 		logger.info("selectAll");
 		return sqlSession.selectList("kr.co.torpedo.webservicemanager.dao.UserDAO.selectAll");
 	}
+	
+	@Override
+	public List<User> listCriteria(Criteria cri) {
+		logger.info("listCriteria");
+		return sqlSession.selectList("kr.co.torpedo.webservicemanager.dao.UserDAO.listCriteria", cri);
+	}
 
+	@Override
+	public int countPaging(Criteria cri) {
+		logger.info("countPaging");
+		return sqlSession.selectOne("kr.co.torpedo.webservicemanager.dao.UserDAO.countPaging", cri);
+	}
+	
 	@Override
 	public void insert(User user) {
 		logger.info("insert");

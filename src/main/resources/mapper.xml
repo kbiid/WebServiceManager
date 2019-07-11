@@ -13,17 +13,25 @@
 
 	<select id="selectAll" resultMap="result">
 		select * from user order by
-		date;
+		date DESC;
+	</select>
+
+	<select id="listCriteria" resultType="User">
+		select * from user order by date DESC limit #{pageStart}, #{perPageNum};
+	</select>
+
+	<select id="countPaging" resultType="int">
+		<![CDATA[select count(id) from user;]]>
 	</select>
 
 	<insert id="insert" parameterType="User">
 		insert into user
-		values(#{id},#{first_name},#{last_name},#{email},#{gender},#{ip_address},#{date});
+		values(#{id},#{firstName},#{lastName},#{email},#{gender},#{ipAddress},#{date});
 	</insert>
 
 	<update id="update" parameterType="User">
 		update user set
-		id=#{id},first_name=#{firstName},last_name=#{lastName},email=#{email},gender=#{gender},ipAddress=#{ip_address},date=#{date}
+		id=#{id},first_name=#{firstName},last_name=#{lastName},email=#{email},gender=#{gender},ip_address=#{ipAddress},date=#{date}
 		where id=#{id};
 	</update>
 

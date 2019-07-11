@@ -2,6 +2,9 @@ package kr.co.torpedo.webservicemanager.domain;
 
 import java.sql.Date;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("User")
 public class User {
 	private int id;
 	private String firstName;
@@ -10,9 +13,6 @@ public class User {
 	private String gender;
 	private String ipAddress;
 	private Date date;
-
-	public User() {
-	}
 
 	public User(int id, String firstName, String lastName, String email, String gender, String ipAddress, Date date) {
 		this.id = id;
