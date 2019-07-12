@@ -3,22 +3,16 @@ package kr.co.torpedo.webservicemanager.controller;
 import java.security.NoSuchAlgorithmException;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.torpedo.webservicemanager.domain.Admin;
-import kr.co.torpedo.webservicemanager.domain.Criteria;
-import kr.co.torpedo.webservicemanager.domain.PageMaker;
-import kr.co.torpedo.webservicemanager.domain.User;
-import kr.co.torpedo.webservicemanager.service.UserService;
 
 /**
  * Handles requests for the application home page.
@@ -28,9 +22,6 @@ public class LoginController {
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	private ConfigReader reader;
 	private Admin admin;
-
-	@Inject
-	private UserService userService;
 
 	// 초기화를 위한 작업
 	@PostConstruct
@@ -48,36 +39,17 @@ public class LoginController {
 		return "login";
 	}
 
-	@RequestMapping(value = "/login", method = { RequestMethod.POST, RequestMethod.GET })
-	public String checkInput(HttpServletRequest httpServletRequest, Model model, @ModelAttribute("cri") Criteria cri)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String checkInput(HttpServletRequest httpServletRequest, Model model)
 			throws NoSuchAlgorithmException {
 		logger.info("checkInput");
 		String id = httpServletRequest.getParameter("inputId");
 		String passwd = httpServletRequest.getParameter("passwd");
 		if (this.admin.checkAdminInfo(id, passwd)) {
 			logger.info("login success");
-			model.addAttribute("list", userService.listCriteria(cri));
-			PageMaker pageMaker = new PageMaker();
-			pageMaker.setCri(cri);
-			pageMaker.setTotalCount(userService.countPaging(cri));
-
-			model.addAttribute("pageMaker", pageMaker);
-			return "viewUserList";
+			return "redirect:/list";
 		}
 		logger.info("login fail");
 		return "loginFail";
 	}
-
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String register() {
-		logger.info("register");
-		return "register";
-	}
-	
-	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public String update() {
-		logger.info("register");
-		return "form";
-	}
-
 }

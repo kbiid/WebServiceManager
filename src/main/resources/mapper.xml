@@ -17,26 +17,34 @@
 	</select>
 
 	<select id="listCriteria" resultType="User">
-		select * from user order by date DESC limit #{pageStart}, #{perPageNum};
+		select * from user order by
+		date DESC limit #{pageStart}, #{perPageNum};
 	</select>
 
 	<select id="countPaging" resultType="int">
-		<![CDATA[select count(id) from user;]]>
+		select count(id) from user;
+	</select>
+
+	<select id="selectUser" resultType="User" parameterType="int">
+		select *
+		from user where id=#{id};
 	</select>
 
 	<insert id="insert" parameterType="User">
-		insert into user(first_name,last_name,email,gender,ip_address,date)
+		insert into
+		user(first_name,last_name,email,gender,ip_address,date)
 		values(#{first_name},#{last_name},#{email},#{gender},#{ip_address},DATE_FORMAT(now(),'%Y-%m-%d'));
 	</insert>
 
 	<update id="update" parameterType="User">
-		update user(first_name,last_name,email,gender,ip_address) set
+		update
+		user(first_name,last_name,email,gender,ip_address) set
 		first_name=#{first_name},last_name=#{last_name},email=#{email},gender=#{gender},ip_address=#{ip_address}
-		where email=#{email};
+		where id=#{id};
 	</update>
 
-	<delete id="delete" parameterType="String">
+	<delete id="delete" parameterType="int">
 		delete from user where
-		email=#{email};
+		id=#{id};
 	</delete>
 </mapper>

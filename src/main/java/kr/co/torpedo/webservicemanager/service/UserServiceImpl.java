@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import kr.co.torpedo.webservicemanager.dao.UserDAO;
-import kr.co.torpedo.webservicemanager.domain.Criteria;
 import kr.co.torpedo.webservicemanager.domain.User;
+import kr.co.torpedo.webservicemanager.paging.Criteria;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -53,5 +53,11 @@ public class UserServiceImpl implements UserService {
 	public void delete(String email) {
 		logger.info("delete");
 		userDao.delete(email);
+	}
+
+	@Override
+	public User selectUser(int id) {
+		logger.info("selectUser");
+		return userDao.selectUser(id);
 	}
 }

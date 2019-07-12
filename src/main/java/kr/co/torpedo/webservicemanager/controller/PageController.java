@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kr.co.torpedo.webservicemanager.domain.Criteria;
-import kr.co.torpedo.webservicemanager.domain.PageMaker;
+import kr.co.torpedo.webservicemanager.paging.Criteria;
+import kr.co.torpedo.webservicemanager.paging.PageMaker;
 import kr.co.torpedo.webservicemanager.service.UserService;
 
 @Controller
-public class PagingController {
-	private static final Logger logger = LoggerFactory.getLogger(PagingController.class);
+public class PageController {
+	private static final Logger logger = LoggerFactory.getLogger(PageController.class);
 
 	@Inject
 	private UserService userService;

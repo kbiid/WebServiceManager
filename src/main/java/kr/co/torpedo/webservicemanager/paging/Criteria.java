@@ -1,4 +1,4 @@
-package kr.co.torpedo.webservicemanager.domain;
+package kr.co.torpedo.webservicemanager.paging;
 
 /**
  * 게시판 페이징 전용 클래스
@@ -7,7 +7,9 @@ package kr.co.torpedo.webservicemanager.domain;
  *
  */
 public class Criteria {
+	// 보여줄 페이지 번호
 	private int page;
+	// 페이지당 보여줄 게시글 갯수
 	private int perPageNum;
 
 	public Criteria() {

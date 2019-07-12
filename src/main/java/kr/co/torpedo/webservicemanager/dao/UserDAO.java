@@ -2,8 +2,8 @@ package kr.co.torpedo.webservicemanager.dao;
 
 import java.util.List;
 
-import kr.co.torpedo.webservicemanager.domain.Criteria;
 import kr.co.torpedo.webservicemanager.domain.User;
+import kr.co.torpedo.webservicemanager.paging.Criteria;
 
 public interface UserDAO {
 	// 날짜 순으로 정렬한 유저 전체 목록
@@ -14,7 +14,10 @@ public interface UserDAO {
 	
 	//총 유저수를 반환
 	public int countPaging(Criteria cri);
-
+	
+	//id값을 이용한 유저 찾기
+	public User selectUser(int id);
+	
 	// 추가된 유저 삽입
 	public void insert(User user);
 
