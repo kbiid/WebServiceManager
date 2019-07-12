@@ -13,8 +13,7 @@
 		class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
 		<div class="navbar-brand col-sm-3 col-md-2 mr-0">Welcome!!</div>
 		<ul class="navbar-nav px-3">
-			<li class="nav-item text-nowrap"><a class="nav-link"
-				href="/kkj/list">돌아가기</a></li>
+			<li class="nav-item text-nowrap"><a class="nav-link" href="/kkj">로그아웃</a></li>
 		</ul>
 	</nav>
 	<form class="container" id="registerForm" name="registerForm"
@@ -65,9 +64,18 @@
 								<input id="inputIP" name="inputIP" class="form-control"
 									type="text" placeholder="아이피주소">
 							</div>
-							<button type="button" class="btn btn-lg btn-primary btn-block"
-								style="left: 700px; width: 100px; height: 40px; text-align: center; font-size: 20px;"
-								onclick="register();">추가</button>
+							<div class="row">
+								<div class="col-6">
+									<button type="button" class="btn btn-lg btn-primary btn-block"
+										style="width: 100px; height: 40px; text-align: center; font-size: 20px;"
+										onclick="register();">추가</button>
+								</div>
+								<div class="col-6">
+									<button type="button" class="btn btn-lg btn-primary btn-block"
+										style="width: 100px; height: 40px; text-align: center; font-size: 20px; float: right;"
+										onclick="location.href='/kkj/list'">취소</button>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -126,6 +134,7 @@
 			alert("이메일 형식을 올바르게 입력해주세요!");
 			return false;
 		}
+		return true;
 	}
 
 	function isEmail(email) {

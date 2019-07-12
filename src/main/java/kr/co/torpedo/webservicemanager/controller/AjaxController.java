@@ -51,9 +51,24 @@ public class AjaxController {
 		user.setEmail(params.get("email").toString());
 		user.setGender(params.get("gender").toString());
 		user.setIpAddress(params.get("ip").toString());
-		System.out.println(params.get("firstName").toString());
 		userService.insert(user);
 		logger.info("addUser success");
+		return "viewUserList";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/updateUser")
+	public String updateUser(@RequestBody Map<String, Object> params) {
+		logger.info("updateUser");
+		User user = new User();
+		user.setId(Integer.parseInt(params.get("id").toString()));
+		user.setFirstName(params.get("firstName").toString());
+		user.setLastName(params.get("lastName").toString());
+		user.setEmail(params.get("email").toString());
+		user.setGender(params.get("gender").toString());
+		user.setIpAddress(params.get("ip").toString());
+		userService.update(user);
+		logger.info("updateUser success");
 		return "viewUserList";
 	}
 }

@@ -50,9 +50,9 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public void delete(String email) {
+	public void delete(int id) {
 		logger.info("delete");
-		sqlSession.delete("kr.co.torpedo.webservicemanager.dao.UserDAO.delete", email);
+		sqlSession.delete("kr.co.torpedo.webservicemanager.dao.UserDAO.delete", id);
 	}
 
 	@Override

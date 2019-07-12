@@ -25,5 +25,5 @@ public interface UserDAO {
 	public void update(User user);
 
 	// 유저 삭제
-	public void delete(String email);
+	public void delete(int id);
 }
