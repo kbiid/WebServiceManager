@@ -33,4 +33,16 @@ public class PageController {
 		
 		return "viewUserList";
 	}
+	
+	@RequestMapping(value = "/typography")
+	public String board() {
+		logger.info("board");
+		return "typography";
+	}
+	
+	@RequestMapping(value = "/widgets")
+	public String info() {
+		logger.info("widgets");
+		return "widgets";
+	}
 }
