@@ -1,6 +1,8 @@
 package kr.co.torpedo.webservicemanager.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,27 +24,47 @@ public class PageController {
 	private UserService userService;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String listPage(@ModelAttribute("cri") Criteria cri, Model model) {
+	public String listPage(@ModelAttribute("cri") Criteria cri, Model model, HttpServletRequest httpServletRequest) {
 		logger.info("listPage");
+		if (!checkSession(httpServletRequest)) {
+			logger.info("Don't have session");
+			return "redirect:/";
+		}
 		model.addAttribute("list", userService.listCriteria(cri));
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(userService.countPaging(cri));
-		
+
 		model.addAttribute("pageMaker", pageMaker);
-		
+
 		return "viewUserList";
 	}
-	
+
 	@RequestMapping(value = "/typography")
-	public String board() {
+	public String board(HttpServletRequest httpServletRequest) {
 		logger.info("board");
+		if (!checkSession(httpServletRequest)) {
+			logger.info("Don't have session");
+			return "redirect:/";
+		}
 		return "typography";
 	}
-	
+
 	@RequestMapping(value = "/widgets")
-	public String info() {
+	public String info(HttpServletRequest httpServletRequest) {
 		logger.info("widgets");
+		if (!checkSession(httpServletRequest)) {
+			logger.info("Don't have session");
+			return "redirect:/";
+		}
 		return "widgets";
+	}
+
+	public boolean checkSession(HttpServletRequest httpServletRequest) {
+		HttpSession session = httpServletRequest.getSession();
+		if (session.getAttribute("Admin") == null) {
+			return false;
+		}
+		return true;
 	}
 }

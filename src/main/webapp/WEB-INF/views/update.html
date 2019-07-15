@@ -13,7 +13,8 @@
 		class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
 		<div class="navbar-brand col-sm-3 col-md-2 mr-0">Welcome!!</div>
 		<ul class="navbar-nav px-3">
-			<li class="nav-item text-nowrap"><a class="nav-link" href="/kkj">로그아웃</a></li>
+			<li class="nav-item text-nowrap"><a class="nav-link"
+				th:href="logout">로그아웃</a></li>
 		</ul>
 	</nav>
 	<div class="col-md-6"
@@ -102,7 +103,10 @@
 			async : false,
 			success : function(res) {
 				alert("수정성공!");
-				$(location).attr('href', '/kkj/detail?id='+document.getElementById("id").textContent);
+				$(location).attr(
+						'href',
+						'/kkj/detail?id='
+								+ document.getElementById("id").textContent);
 			},
 			error : function(request, status, error) {
 				alert("수정실패");

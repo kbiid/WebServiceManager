@@ -1,6 +1,6 @@
 create table user (
 	id int not null,
-	first_name varchar(100) not null,
+	first_name varchar(100) not null auto_increment,
 	last_name varchar(100) not null,
 	email varchar(200) not null,
 	gender varchar(100) not null,

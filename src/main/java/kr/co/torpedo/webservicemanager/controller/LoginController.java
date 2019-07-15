@@ -4,6 +4,7 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,16 +41,29 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String checkInput(HttpServletRequest httpServletRequest, Model model)
-			throws NoSuchAlgorithmException {
+	public String checkInput(HttpServletRequest httpServletRequest, Model model) throws NoSuchAlgorithmException {
 		logger.info("checkInput");
 		String id = httpServletRequest.getParameter("inputId");
 		String passwd = httpServletRequest.getParameter("passwd");
 		if (this.admin.checkAdminInfo(id, passwd)) {
 			logger.info("login success");
+			logger.info("make session");
+			HttpSession session = httpServletRequest.getSession(true);
+			session.setAttribute("Admin", admin);
 			return "redirect:/list";
 		}
 		logger.info("login fail");
 		return "loginFail";
+	}
+
+	@RequestMapping(value = "/logout")
+	public String logout(HttpServletRequest httpServletRequest, Model model) throws NoSuchAlgorithmException {
+		logger.info("logout");
+		HttpSession session = httpServletRequest.getSession();
+		if (session.getAttribute("Admin") != null) {
+			logger.info("remove session");
+			session.invalidate();
+		}
+		return "redirect:/";
 	}
 }

@@ -13,7 +13,8 @@
 		class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
 		<div class="navbar-brand col-sm-3 col-md-2 mr-0">Welcome!!</div>
 		<ul class="navbar-nav px-3">
-			<li class="nav-item text-nowrap"><a class="nav-link" href="/kkj">로그아웃</a></li>
+			<li class="nav-item text-nowrap"><a class="nav-link"
+				th:href="logout">로그아웃</a></li>
 		</ul>
 	</nav>
 	<form class="container" id="registerForm" name="registerForm"
@@ -109,7 +110,7 @@
 				$(location).attr('href', '/kkj/list');
 			},
 			error : function(request, status, error) {
-				alert("등록실패");
+				alert("code : " + request.status+"\n" + "message : " + request.responseText + "\n" + "error : " + error);
 			}
 		});
 	}
