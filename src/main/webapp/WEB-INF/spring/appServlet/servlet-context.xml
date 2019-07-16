@@ -58,4 +58,13 @@
 	<context:component-scan
 		base-package="kr.co.torpedo.webservicemanager" />
 
+	<beans:bean id="interceptor" class="kr.co.torpedo.webservicemanager.interceptor.InterceptorHandler" />
+	<interceptors>
+		<interceptor>
+			<mapping path="/*" />
+			<exclude-mapping path="/" />
+			<exclude-mapping path="/login" />
+			<beans:ref bean="interceptor"/>
+		</interceptor>
+	</interceptors>
 </beans:beans>

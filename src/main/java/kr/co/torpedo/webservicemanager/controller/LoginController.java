@@ -35,20 +35,23 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
+	public String home(HttpSession session) {
 		logger.info("home method");
+		if (session.getAttribute("Admin") != null) {
+			logger.info("session Already exist");
+			session.removeAttribute("Admin");
+		}
 		return "login";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String checkInput(HttpServletRequest httpServletRequest, Model model) throws NoSuchAlgorithmException {
+	public String checkInput(HttpSession session, HttpServletRequest httpServletRequest, Model model)
+			throws NoSuchAlgorithmException {
 		logger.info("checkInput");
-		String id = httpServletRequest.getParameter("inputId");
-		String passwd = httpServletRequest.getParameter("passwd");
-		if (this.admin.checkAdminInfo(id, passwd)) {
-			logger.info("login success");
-			logger.info("make session");
-			HttpSession session = httpServletRequest.getSession(true);
+		if (this.admin.checkAdminInfo(httpServletRequest.getParameter("inputId"),
+				httpServletRequest.getParameter("passwd"))) {
+			logger.info("login success And make session");
+			session = httpServletRequest.getSession(true);
 			session.setAttribute("Admin", admin);
 			return "redirect:/list";
 		}
