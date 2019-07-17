@@ -112,7 +112,7 @@
 
 		$.ajax({
 			contentType : 'application/json',
-			url : '/kkj/updateUser',
+			url : '/updateUser',
 			type : 'POST',
 			dataType : 'html',
 			data : JSON.stringify(data),
@@ -121,7 +121,7 @@
 				alert("수정성공!");
 				$(location).attr(
 						'href',
-						'/kkj/detail?id='
+						'/detail?id='
 								+ document.getElementById("id").textContent);
 			},
 			error : function(request, status, error) {

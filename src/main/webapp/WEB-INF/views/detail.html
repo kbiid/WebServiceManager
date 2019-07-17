@@ -87,7 +87,7 @@
 					<i class="fa fa-ban"></i> 삭제
 				</button>
 				<button type="button" class="btn btn-sm btn-primary"
-					onclick="location.href='/kkj/list'">돌아가기</button>
+					onclick="location.href='/list'">돌아가기</button>
 			</div>
 		</div>
 	</div>
@@ -106,13 +106,13 @@
 
 		$.ajax({
 			contentType : 'application/json',
-			url : "/kkj/delete",
+			url : "/delete",
 			type : "POST",
 			dataType : 'html',
 			data : JSON.stringify(data),
 			success : function(res) {
 				alert("삭제성공!");
-				$(location).attr('href', '/kkj/list');
+				$(location).attr('href', '/list');
 			},
 			error : function(request, status, error) {
 				alert("삭제실패");
